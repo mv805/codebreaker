@@ -1,23 +1,25 @@
-import logo from './logo.svg';
+import codeGenerator from './codeGenerator';
 import './App.css';
+import GuessSelectionPanel from './components/GuessSelectionPanel';
+import { useState } from 'react';
+import Guess from './components/Guess';
+import GameOverModal from './components/GameOverModal';
 
 function App() {
+
+  const [secretCode, setSecretCode] = useState([1, 2, 3, 4]);
+  const [playerGuess, setPlayerGuess] = useState([0, 0, 0, 0]);
+  const [playerGuessList, setplayerGuessList] = useState([0, 0, 0]);
+  const [gameOver, setGameOver] = useState(false);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      { gameOver && <GameOverModal /> }
+      <h1 className='game-title'>Code Breaker</h1>
+      <GuessSelectionPanel />
+      { playerGuessList.map(guess => {
+        return <Guess />;
+      }) }
     </div>
   );
 }
