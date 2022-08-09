@@ -20,7 +20,6 @@ describe('Code Generator functionality', () => {
       expect(parseInt(code.join(''))).toBeLessThanOrEqual(9999);
       testCodeList.push(code.join(''));
     }
-    console.log(testCodeList);
   });
 
   it('should return a 4 digit array as the code', () => {
