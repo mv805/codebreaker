@@ -1,51 +1,16 @@
 //clicking the arrows and cyling through all nubmers and back to 0 or 9
 //displaying the current guess correctly
 
-
-
-// test('renders learn react link', () => {
-//   render(<App />);
-//   // const linkElement = screen.getByText(/learn react/i);
-//   // expect(linkElement).toBeInTheDocument();
-// });
-
-// describe('Code Generator functionality', () => {
-//   const CODES_GENERATED = 10000;
-
-//   it(`should generate a code >= '0000' and <= '9999'`, () => {
-//     let testCodeList = [];
-//     for (let index = 0; index < TEST_RUNS; index++) {
-//       let code = codeGenerator();
-//       expect(parseInt(code.join(''))).toBeGreaterThanOrEqual(0);
-//       expect(parseInt(code.join(''))).toBeLessThanOrEqual(9999);
-//       testCodeList.push(code.join(''));
-//     }
-//     console.log(testCodeList);
-//   });
-
-//   it('should return a 4 digit array as the code', () => {
-
-//     let testCode;
-
-//     for (let index = 0; index < TEST_RUNS; index++) {
-//       testCode = codeGenerator();
-//       expect(testCode.length).toEqual(4);
-//       expect(testCode.length).not.toBeLessThanOrEqual(3);
-//       expect(testCode.length).not.toBeGreaterThanOrEqual(5);
-//     }
-
-//   });
-
-// });
 import React from "react";
 import { unmountComponentAtNode } from "react-dom";
 import { render } from '@testing-library/react';
 import { screen } from '@testing-library/dom';
+import userEvent from "@testing-library/user-event";
 import { codeGenerator } from '../codeGenerator';
 
 import GuessSelectionPanel from './GuessSelectionPanel';
 
-const CODES_GENERATED = 10;
+const CODES_GENERATED = 1000;
 let generatedTestCodes = [];
 for (let index = 0; index < CODES_GENERATED; index++) {
     generatedTestCodes.push(codeGenerator());
@@ -67,18 +32,72 @@ afterEach(() => {
 
 describe('GuessSelectionPanel component', () => {
 
-    
-    generatedTestCodes.forEach(testCase => {
-        it("displays the correct guess in the display", () => {
-            render(<GuessSelectionPanel
-                currentGuess={ testCase }
-            />, container);
+    describe('digital display', () => {
 
-            let codeOnScreen = screen.getAllByText(/[0-9]/i).map(digit => { return digit.textContent; }).join('');
-            expect(codeOnScreen).toBe(`${ testCase.join('') }`);
+        generatedTestCodes.forEach(testCase => {
+            it("displays the correct guess in the display", () => {
+                render(<GuessSelectionPanel
+                    currentGuess={ testCase }
+                />, container);
 
+                let codeOnScreen = screen.getAllByRole('textbox').map(digit => { return digit.textContent; }).join('');
+                expect(codeOnScreen).toBe(`${ testCase.join('') }`);
+            });
         });
 
     });
+
+    describe('arrow buttons', () => {
+
+        it('should fire the click events with correct event object when clicking the arrow buttons', () => {
+
+            let onDigitChangeTest = jest.fn();
+
+            render(<GuessSelectionPanel
+                currentGuess={ [0, 0, 0, 0] }
+                onDigitChange={ onDigitChangeTest }
+            />, container);
+
+            const arrowUpButtons = screen.getAllByRole('button', { name: /arrow up/i });
+
+            arrowUpButtons.forEach((button, digitIndex) => {
+                userEvent.click(button);
+                expect(onDigitChangeTest).toHaveBeenLastCalledWith({
+                    direction: 'up',
+                    index: digitIndex
+                });
+            });
+
+            const arrowDownButtons = screen.getAllByRole('button', { name: /arrow down/i });
+
+            arrowDownButtons.forEach((button, digitIndex) => {
+                userEvent.click(button);
+                expect(onDigitChangeTest).toHaveBeenLastCalledWith({
+                    direction: 'down',
+                    index: digitIndex
+                });
+            });
+        });
+
+    });
+
+    describe('submit button', () => {
+
+        it('should pass the guess submit event when clicked', () => {
+            const onSubmitGuessTest = jest.fn();
+
+            render(<GuessSelectionPanel
+                currentGuess={ [0, 0, 0, 0] }
+                onSubmitGuess={onSubmitGuessTest}
+            />, container);
+
+            const submitButton = screen.getByRole('button', {name: /submit/i});
+            userEvent.click(submitButton);
+            expect(onSubmitGuessTest).toHaveBeenCalledTimes(1);
+            expect(onSubmitGuessTest).not.toHaveBeenCalledTimes(0);
+
+        });
+    });
+
 
 });
