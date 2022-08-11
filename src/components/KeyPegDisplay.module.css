@@ -1,0 +1,38 @@
+.display {
+    display: grid;
+    grid-template: 1fr 1fr/ 1fr 1fr;
+    height: 50px;
+    width: 50px;
+    gap: 3px;
+}
+
+.display__cell {
+    box-shadow: inset 0px 6px 4px rgba(0, 0, 0, 0.5);
+    background-color: var(--digit-bg);
+    border-radius: 3px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.display__cell__red-peg,
+.display__cell__white-peg,
+.display__cell__empty-peg {
+    width: 70%;
+    height: 70%;
+    border-radius: 2px;
+}
+
+.display__cell__red-peg {
+    background-color: var(--place-and-number-marker);
+}
+
+.display__cell__white-peg {
+    background-color: var(--number-marker);
+}
+
+.display__cell__empty-peg {
+    background-color: rgba(0, 0, 0, 0);
+}

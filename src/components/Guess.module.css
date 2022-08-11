@@ -1,0 +1,36 @@
+.panel {
+    width: 100%;
+    max-width: 300px;
+    background-color: var(--panel);
+    border-radius: 20px;
+    gap: 0.5rem;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    box-sizing: border-box;
+    border: 5px solid var(--panel);
+}
+
+.last-guess {
+    border-color: var(--number-marker);
+}
+
+.digits {
+    display: flex;
+    gap: 5%;
+    width: 60%;
+    height: 30px;
+}
+
+.digits__cell {
+    width: 100%;
+    box-shadow: inset 0px 6px 4px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--digit-bg);
+    color: var(--number-marker);
+    border-radius: 3px;
+    font-size: 1rem;
+}

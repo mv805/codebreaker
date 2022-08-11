@@ -4,16 +4,16 @@ import './App.css';
 import GuessSelectionPanel from './components/GuessSelectionPanel';
 import { useState } from 'react';
 import Guess from './components/Guess';
-import GameOverModal from './components/GameOverModal';
+import GameOverDisplay from './components/GameOverDisplay';
 
 function App() {
 
-  const [secretCode, setSecretCode] = useState([1, 2, 3, 4]);
+  const [secretCode, setSecretCode] = useState([1, 1, 3, 8]);
   const [playerGuess, setPlayerGuess] = useState([0, 0, 0, 0]);
-  const [playerGuessList, setplayerGuessList] = useState([0, 0, 0]);
+  const [playerGuessList, setplayerGuessList] = useState([]);
   const [gameOver, setGameOver] = useState(false);
 
-  function updateGuess(direction, index) {
+  const updateGuess = (direction, index) => {
 
     if (direction === 'up') {
       if (playerGuess[index] >= 9) {
@@ -31,23 +31,55 @@ function App() {
       throw new Error();
     }
     setPlayerGuess([...playerGuess]);
-  }
+  };
 
-  function guessSubmitHandler() {
-    setplayerGuessList(prevState => [...prevState, playerGuess]);
-  }
+  const guessSubmitHandler = () => {
+
+    setplayerGuessList(prevState => [[...playerGuess], ...prevState]);
+
+    if (playerGuess.every((number, index) => number === secretCode[index])) {
+      setGameOver(true);
+    }
+
+  };
+
+  const getPegColors = (playerGuess, secretCode) => {
+
+    const emptyPegs = [];
+    const redPegs = [];
+    const whitePegs = [];
+
+    playerGuess.forEach((number, index) => {
+
+      if (secretCode[index] === number) {
+        redPegs.push('red');
+      } else if (secretCode.includes(number)) {
+        whitePegs.push('white');
+      } else {
+        emptyPegs.push('empty');
+      }
+
+    });
+
+    return [...redPegs, ...whitePegs, ...emptyPegs];
+
+  };
 
   return (
     <div className="App">
-      { gameOver && <GameOverModal /> }
       <h1 className='game-title'>Code Breaker</h1>
-      <GuessSelectionPanel
+      { gameOver && <GameOverDisplay totalGuesses={ playerGuessList.length } /> }
+      { !gameOver && <GuessSelectionPanel
         currentGuess={ playerGuess }
         onDigitChange={ (e) => updateGuess(e.direction, e.index) }
         onSubmitGuess={ guessSubmitHandler }
-      />
-      { playerGuessList.map(guess => {
-        return <Guess key={ uniqid() } />;
+      /> }
+      { playerGuessList.map((guess, index) => {
+        return <Guess
+          playerGuess={ guess }
+          key={ uniqid() }
+          guessKeys={ getPegColors(guess, secretCode) }
+          lastGuess={ index === 0 ? true : false } />;
       }) }
     </div>
   );

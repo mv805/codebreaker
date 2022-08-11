@@ -14,9 +14,9 @@ const DigitSelector = (props) => {
                         index: props.digitIndex
                     });
                 } }>
-                <img src={ arrowUp } alt={`arrow up index ${props.digitIndex}`}/>
+                <img src={ arrowUp } alt={`arrow up ${props.digitIndex + 1}`}/>
             </button>
-            <div role="textbox" aria-label={`digit index ${props.digitIndex}`}>{ props.digitValue }</div>
+            <div role="textbox" aria-label={`digit ${props.digitIndex + 1}`}>{ props.digitValue }</div>
             <button
                 className={ styles['selector__button'] }
                 onClick={ () => {
