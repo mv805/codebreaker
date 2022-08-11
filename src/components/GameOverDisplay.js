@@ -1,9 +1,18 @@
 import React from 'react';
 import styles from './GameOverDisplay.module.css';
 
-const GameOverDisplay = () => {
+const GameOverDisplay = (props) => {
     return (
-        <div>GameOverDisplay</div>
+        <div className={ styles['game-over-display'] }>
+            <h1>You Win!</h1>
+            <p>It took you
+                <em> { props.totalGuesses } { props.totalGuesses <= 1 ? 'guess' : 'guesses' } </em>
+                to break the code!
+            </p>
+            <button 
+            className={styles['game-over-display__restart-button']}
+            onClick={props.onRestartGame}>Play Again</button>
+        </div>
     );
 };
 

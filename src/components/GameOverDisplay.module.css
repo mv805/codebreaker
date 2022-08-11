@@ -1,0 +1,45 @@
+.game-over-display {
+    width: 100%;
+    max-width: 300px;
+    color: var(--number-marker);
+    background-color: var(--panel);
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.game-over-display p {
+    text-align: center;
+    padding: 2rem;
+    margin: 0;
+}
+
+.game-over-display h1 {
+    font-family: 'Permanent Marker', cursive;
+    text-decoration: underline;
+    margin: 0;
+}
+
+.game-over-display em {
+    color: var(--digit-bg);
+}
+
+.game-over-display__restart-button {
+    font: inherit;
+    background-color: var(--background-color);
+    color: var(--number-marker);
+    text-transform: uppercase;
+    border: none;
+    width: 70%;
+    padding: 0.5rem 0;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.game-over-display__restart-button:active {
+    background-color: var(--number-marker);
+    color: var(--background-color);
+}

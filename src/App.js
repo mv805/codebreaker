@@ -65,10 +65,20 @@ function App() {
 
   };
 
+  const restartGame = () => {
+    //setsecretcode
+    setPlayerGuess([0, 0, 0, 0]);
+    setplayerGuessList([]);
+    setGameOver(false);
+  };
+
   return (
     <div className="App">
       <h1 className='game-title'>Code Breaker</h1>
-      { gameOver && <GameOverDisplay totalGuesses={ playerGuessList.length } /> }
+      { gameOver && <GameOverDisplay
+        totalGuesses={ playerGuessList.length }
+        onRestartGame={ restartGame }
+      /> }
       { !gameOver && <GuessSelectionPanel
         currentGuess={ playerGuess }
         onDigitChange={ (e) => updateGuess(e.direction, e.index) }
