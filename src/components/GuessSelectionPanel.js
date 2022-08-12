@@ -5,7 +5,9 @@ import styles from './GuessSelectionPanel.module.css';
 
 const GuessSelectionPanel = (props) => {
     return (
-        <div className={ styles.panel }>
+        <div className={ styles.panel }
+        role='menu'
+        aria-label='guess selector'>
             <div className={ styles[`panel__digit-selector`] }>
                 { props.currentGuess.map((digit, index) => {
                     return <DigitSelector

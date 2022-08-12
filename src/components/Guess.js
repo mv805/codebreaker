@@ -8,14 +8,14 @@ const Guess = (props) => {
         <div className={
             `${ styles.panel } ${ props.lastGuess ? styles['last-guess'] : '' }` }
             role="textbox"
-            aria-label='guess'>
+            aria-label={ `guess ${ props.guessNumber }` }>
             <div className={ styles.digits }>
                 { props.playerGuess.map((_digit, index) => {
                     return <div
                         className={ styles['digits__cell'] }
                         key={ uniqid() }
                         role="textbox"
-                        aria-label={`guess digit ${index + 1}`}>
+                        aria-label={ `guess digit ${ index + 1 }` }>
                         { props.playerGuess[index] }
                     </div>;
                 }) }

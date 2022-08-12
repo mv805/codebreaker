@@ -3,8 +3,7 @@
 
 import React from "react";
 import { unmountComponentAtNode } from "react-dom";
-import { render } from '@testing-library/react';
-import { screen } from '@testing-library/dom';
+import { render, screen } from '@testing-library/react';
 import userEvent from "@testing-library/user-event";
 import { codeGenerator } from '../codeGenerator';
 

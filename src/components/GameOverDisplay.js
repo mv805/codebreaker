@@ -3,7 +3,9 @@ import styles from './GameOverDisplay.module.css';
 
 const GameOverDisplay = (props) => {
     return (
-        <div className={ styles['game-over-display'] }>
+        <div className={ styles['game-over-display'] }
+        role="textbox"
+        aria-label='game win summary'>
             <h1>You Win!</h1>
             <p>It took you
                 <em> { props.totalGuesses } { props.totalGuesses <= 1 ? 'guess' : 'guesses' } </em>

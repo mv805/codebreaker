@@ -1,0 +1,166 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Correct initial rendering of the App renders correctly 1`] = `
+<div
+  className="App"
+>
+  <h1
+    className="game-title"
+  >
+    Code Breaker
+  </h1>
+  <div
+    className="display"
+  >
+    <h1>
+      Secret Code:
+    </h1>
+    <div
+      aria-label="secret code display"
+      className="cell display__digits__hidden"
+      role="textbox"
+    >
+      <div>
+        ?
+      </div>
+      <div>
+        ?
+      </div>
+      <div>
+        ?
+      </div>
+      <div>
+        ?
+      </div>
+    </div>
+  </div>
+  <div
+    aria-label="guess selector"
+    className="panel"
+    role="menu"
+  >
+    <div
+      className="panel__digit-selector"
+    >
+      <div
+        className="selector"
+      >
+        <button
+          className="selector__button"
+          onClick={[Function]}
+        >
+          <img
+            alt="arrow up 1"
+            src="TriangleArrow-Up.svg"
+          />
+        </button>
+        <div
+          aria-label="digit 1"
+          role="textbox"
+        >
+          0
+        </div>
+        <button
+          className="selector__button"
+          onClick={[Function]}
+        >
+          <img
+            alt="arrow down 1"
+            src="TriangleArrow-Down.svg"
+          />
+        </button>
+      </div>
+      <div
+        className="selector"
+      >
+        <button
+          className="selector__button"
+          onClick={[Function]}
+        >
+          <img
+            alt="arrow up 2"
+            src="TriangleArrow-Up.svg"
+          />
+        </button>
+        <div
+          aria-label="digit 2"
+          role="textbox"
+        >
+          0
+        </div>
+        <button
+          className="selector__button"
+          onClick={[Function]}
+        >
+          <img
+            alt="arrow down 2"
+            src="TriangleArrow-Down.svg"
+          />
+        </button>
+      </div>
+      <div
+        className="selector"
+      >
+        <button
+          className="selector__button"
+          onClick={[Function]}
+        >
+          <img
+            alt="arrow up 3"
+            src="TriangleArrow-Up.svg"
+          />
+        </button>
+        <div
+          aria-label="digit 3"
+          role="textbox"
+        >
+          0
+        </div>
+        <button
+          className="selector__button"
+          onClick={[Function]}
+        >
+          <img
+            alt="arrow down 3"
+            src="TriangleArrow-Down.svg"
+          />
+        </button>
+      </div>
+      <div
+        className="selector"
+      >
+        <button
+          className="selector__button"
+          onClick={[Function]}
+        >
+          <img
+            alt="arrow up 4"
+            src="TriangleArrow-Up.svg"
+          />
+        </button>
+        <div
+          aria-label="digit 4"
+          role="textbox"
+        >
+          0
+        </div>
+        <button
+          className="selector__button"
+          onClick={[Function]}
+        >
+          <img
+            alt="arrow down 4"
+            src="TriangleArrow-Down.svg"
+          />
+        </button>
+      </div>
+    </div>
+    <button
+      className="panel__submit-button"
+      onClick={[Function]}
+    >
+      Submit
+    </button>
+  </div>
+</div>
+`;

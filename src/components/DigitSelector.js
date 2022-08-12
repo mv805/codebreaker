@@ -25,7 +25,7 @@ const DigitSelector = (props) => {
                         index: props.digitIndex
                     });
                 } }>
-                <img src={ arrowDown } alt={`arrow down index ${props.digitIndex}`} />
+                <img src={ arrowDown } alt={`arrow down ${props.digitIndex + 1}`} />
             </button>
         </div>
     );

@@ -1,14 +1,15 @@
-import codeGenerator from './codeGenerator';
+import { codeGenerator } from './codeGenerator';
 import uniqid from 'uniqid';
 import './App.css';
 import GuessSelectionPanel from './components/GuessSelectionPanel';
 import { useState } from 'react';
 import Guess from './components/Guess';
 import GameOverDisplay from './components/GameOverDisplay';
+import SecretCodeDisplay from './components/SecretCodeDisplay';
 
 function App() {
 
-  const [secretCode, setSecretCode] = useState([1, 1, 3, 8]);
+  const [secretCode, setSecretCode] = useState(codeGenerator());
   const [playerGuess, setPlayerGuess] = useState([0, 0, 0, 0]);
   const [playerGuessList, setplayerGuessList] = useState([]);
   const [gameOver, setGameOver] = useState(false);
@@ -66,7 +67,7 @@ function App() {
   };
 
   const restartGame = () => {
-    //setsecretcode
+    setSecretCode(codeGenerator());
     setPlayerGuess([0, 0, 0, 0]);
     setplayerGuessList([]);
     setGameOver(false);
@@ -75,6 +76,10 @@ function App() {
   return (
     <div className="App">
       <h1 className='game-title'>Code Breaker</h1>
+      { <SecretCodeDisplay
+        hidden={ gameOver ? false : true }
+        secretCode={ secretCode }
+      /> }
       { gameOver && <GameOverDisplay
         totalGuesses={ playerGuessList.length }
         onRestartGame={ restartGame }
@@ -86,6 +91,7 @@ function App() {
       /> }
       { playerGuessList.map((guess, index) => {
         return <Guess
+          guessNumber={ playerGuessList.length - index }
           playerGuess={ guess }
           key={ uniqid() }
           guessKeys={ getPegColors(guess, secretCode) }
