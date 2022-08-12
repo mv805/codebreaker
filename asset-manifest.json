@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/mv805/codebreaker.git/static/css/main.e198c64b.css",
-    "main.js": "/mv805/codebreaker.git/static/js/main.873bb50d.js",
-    "index.html": "/mv805/codebreaker.git/index.html",
-    "static/media/TriangleArrow-Down.svg": "/mv805/codebreaker.git/static/media/TriangleArrow-Down.aefe13708bf6a33b0b9fc1e8b2367109.svg",
-    "static/media/TriangleArrow-Up.svg": "/mv805/codebreaker.git/static/media/TriangleArrow-Up.6f7ffc6f15a846436aa9f0748af28538.svg",
-    "main.e198c64b.css.map": "/mv805/codebreaker.git/static/css/main.e198c64b.css.map",
-    "main.873bb50d.js.map": "/mv805/codebreaker.git/static/js/main.873bb50d.js.map"
+    "main.css": "/codebreaker/static/css/main.e198c64b.css",
+    "main.js": "/codebreaker/static/js/main.843e32e0.js",
+    "index.html": "/codebreaker/index.html",
+    "static/media/TriangleArrow-Down.svg": "/codebreaker/static/media/TriangleArrow-Down.aefe13708bf6a33b0b9fc1e8b2367109.svg",
+    "static/media/TriangleArrow-Up.svg": "/codebreaker/static/media/TriangleArrow-Up.6f7ffc6f15a846436aa9f0748af28538.svg",
+    "main.e198c64b.css.map": "/codebreaker/static/css/main.e198c64b.css.map",
+    "main.843e32e0.js.map": "/codebreaker/static/js/main.843e32e0.js.map"
   },
   "entrypoints": [
     "static/css/main.e198c64b.css",
-    "static/js/main.873bb50d.js"
+    "static/js/main.843e32e0.js"
   ]
 }
