@@ -1,10 +1,10 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 
 .App {
   margin: 0;
   max-width: 500px;
   width: 90%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -16,4 +16,14 @@
   color: var(--number-marker);
   font-family: 'Permanent Marker', cursive;
   text-align: center;
+}
+
+footer {
+  font-size: .75rem;
+  color: var(--number-marker);
+  margin-top: auto;
+}
+
+footer span {
+  color: rgb(80, 80, 80);
 }

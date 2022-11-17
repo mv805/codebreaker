@@ -97,6 +97,7 @@ function App() {
           guessKeys={ getPegColors(guess, secretCode) }
           lastGuess={ index === 0 ? true : false } />;
       }) }
+      <footer>Coded by <a href='https://github.com/mv805'>Matt Villa.</a> All rights reserved ©<span> V. 0.1.0</span></footer>
     </div>
   );
 }
