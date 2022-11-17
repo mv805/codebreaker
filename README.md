@@ -29,8 +29,7 @@ I replicated the classic bulls and cows or 'mastermind' type code breaking game.
 ### What I learned
 
 TBD
-            
-```
+       
 ### Continued development
 
 TBD
